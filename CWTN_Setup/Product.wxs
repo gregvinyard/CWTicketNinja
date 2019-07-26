@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="CW Ticket Ninja" Language="1033" Version="1.0.0.0" Manufacturer="GV" UpgradeCode="2839b785-b3d6-478c-9f57-b101d448162d">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="b9fa03c3-bece-4ba0-bd28-011f1d982f00">
+        <Shortcut Id="ApplicationStartMenuShortcut" Name="CW Ticket Ninja" Description="CW Ticket Ninja" Target="[INSTALLFOLDER]CWTicketNinja.exe" WorkingDirectory="INSTALLFOLDER">
+
+          <!--AUMID-->
+          <ShortcutProperty Key="System.AppUserModel.ID" Value="YourCompany.YourApp"/>
+
+          <!--COM CLSID-->
+          <ShortcutProperty Key="System.AppUserModel.ToastActivatorCLSID" Value="{b9fa03c3-bece-4ba0-bd28-011f1d982f00}"/>
+
+        </Shortcut>
+      </Component>
+    </DirectoryRef>
+    
+		<Feature Id="ProductFeature" Title="CWTN Setup" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="CWTicketNinja" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			<!-- <Component Id="ProductComponent"> -->
+				<!-- TODO: Insert files, registry keys, and other resources here. -->
+			<!-- </Component> -->
+		</ComponentGroup>
+	</Fragment>
+
+
+</Wix>

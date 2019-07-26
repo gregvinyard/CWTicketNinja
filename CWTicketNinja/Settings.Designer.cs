@@ -36,6 +36,8 @@
             this.tabCtlSettings = new System.Windows.Forms.TabControl();
             this.tabSettingsGeneral = new System.Windows.Forms.TabPage();
             this.tabSettingsAccount = new System.Windows.Forms.TabPage();
+            this.txtSiteName = new System.Windows.Forms.TextBox();
+            this.lblSiteName = new System.Windows.Forms.Label();
             this.txtCompanyName = new System.Windows.Forms.TextBox();
             this.lblCompanyName = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -43,18 +45,16 @@
             this.lblUserName = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.tabSettingsHotkeys = new System.Windows.Forms.TabPage();
-            this.txtSiteName = new System.Windows.Forms.TextBox();
-            this.lblSiteName = new System.Windows.Forms.Label();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabDebug = new System.Windows.Forms.TabPage();
             this.btnTestNotification = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabCtlSettings.SuspendLayout();
             this.tabSettingsAccount.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.tabDebug.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnApplySettings
@@ -125,6 +125,22 @@
             this.tabSettingsAccount.Text = "Account";
             this.tabSettingsAccount.UseVisualStyleBackColor = true;
             // 
+            // txtSiteName
+            // 
+            this.txtSiteName.Location = new System.Drawing.Point(102, 16);
+            this.txtSiteName.Name = "txtSiteName";
+            this.txtSiteName.Size = new System.Drawing.Size(235, 20);
+            this.txtSiteName.TabIndex = 7;
+            // 
+            // lblSiteName
+            // 
+            this.lblSiteName.AutoSize = true;
+            this.lblSiteName.Location = new System.Drawing.Point(15, 19);
+            this.lblSiteName.Name = "lblSiteName";
+            this.lblSiteName.Size = new System.Drawing.Size(25, 13);
+            this.lblSiteName.TabIndex = 6;
+            this.lblSiteName.Text = "Site";
+            // 
             // txtCompanyName
             // 
             this.txtCompanyName.Location = new System.Drawing.Point(102, 42);
@@ -183,49 +199,6 @@
             this.tabSettingsHotkeys.Text = "Hotkeys";
             this.tabSettingsHotkeys.UseVisualStyleBackColor = true;
             // 
-            // txtSiteName
-            // 
-            this.txtSiteName.Location = new System.Drawing.Point(102, 16);
-            this.txtSiteName.Name = "txtSiteName";
-            this.txtSiteName.Size = new System.Drawing.Size(235, 20);
-            this.txtSiteName.TabIndex = 7;
-            // 
-            // lblSiteName
-            // 
-            this.lblSiteName.AutoSize = true;
-            this.lblSiteName.Location = new System.Drawing.Point(15, 19);
-            this.lblSiteName.Name = "lblSiteName";
-            this.lblSiteName.Size = new System.Drawing.Size(25, 13);
-            this.lblSiteName.TabIndex = 6;
-            this.lblSiteName.Text = "Site";
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.Visible = true;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(117, 48);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.exitToolStripMenuItem.Text = "E&xit";
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.settingsToolStripMenuItem.Text = "&Settings";
-            // 
             // tabDebug
             // 
             this.tabDebug.Controls.Add(this.btnTestNotification);
@@ -247,6 +220,34 @@
             this.btnTestNotification.UseVisualStyleBackColor = true;
             this.btnTestNotification.Click += new System.EventHandler(this.BtnTestNotification_Click);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Text = "&Settings";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
             // Settings
             // 
             this.AcceptButton = this.btnOkSettings;
@@ -267,8 +268,8 @@
             this.tabCtlSettings.ResumeLayout(false);
             this.tabSettingsAccount.ResumeLayout(false);
             this.tabSettingsAccount.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.tabDebug.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

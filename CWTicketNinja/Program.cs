@@ -17,6 +17,12 @@ namespace CWTicketNinja
         [STAThread]
         static void Main()
         {
+            // Register AUMID and COM server (for Desktop Bridge apps, this no-ops)
+            DesktopNotificationManagerCompat.RegisterAumidAndComServer<MyNotificationActivator>("com.thewired.cwticketninja");
+
+            // Register COM server and activator type
+            DesktopNotificationManagerCompat.RegisterActivator<MyNotificationActivator>();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Settings());
