@@ -6,17 +6,38 @@
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 		<MediaTemplate />
 
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="APPLICATIONROOTDIRECTORY" Name="CW Ticket Ninja"/>
+      </Directory>
+      <!-- Step 1: Define the directory structure -->
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="CW Ticket Ninja"/>
+      </Directory>
+    </Directory>
+
+    <DirectoryRef Id="APPLICATIONROOTDIRECTORY">
+      <Component Id="CWTicketNinja.exe" Guid="b9fa03c3-bece-4ba0-bd28-011f1d982f00">
+        <File Id="CWTicketNinja.exe" Source="MySourceFiles\CWTicketNinja.exe" KeyPath="yes" Checksum="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <!-- Step 2: Add the shortcut to your installer package -->
     <DirectoryRef Id="ApplicationProgramsFolder">
       <Component Id="ApplicationShortcut" Guid="b9fa03c3-bece-4ba0-bd28-011f1d982f00">
-        <Shortcut Id="ApplicationStartMenuShortcut" Name="CW Ticket Ninja" Description="CW Ticket Ninja" Target="[INSTALLFOLDER]CWTicketNinja.exe" WorkingDirectory="INSTALLFOLDER">
-
+        <Shortcut Id="ApplicationStartMenuShortcut"
+                  Name="CW Ticket Ninja"
+                  Description="CW Ticket Ninja"
+                  Target="[#CWTicketNinja.exe]"
+                  WorkingDirectory="APPLICATIONROOTDIRECTORY">
           <!--AUMID-->
-          <ShortcutProperty Key="System.AppUserModel.ID" Value="YourCompany.YourApp"/>
+          <ShortcutProperty Key="System.AppUserModel.ID" Value="com.thewired.cwticketninja"/>
 
           <!--COM CLSID-->
           <ShortcutProperty Key="System.AppUserModel.ToastActivatorCLSID" Value="{b9fa03c3-bece-4ba0-bd28-011f1d982f00}"/>
-
         </Shortcut>
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\TheWired\CWTicketNinja" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
     
@@ -29,16 +50,18 @@
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
 				<Directory Id="INSTALLFOLDER" Name="CWTicketNinja" />
-			</Directory>
+      </Directory> 
 		</Directory>
+
+
 	</Fragment>
 
 	<Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-			<!-- <Component Id="ProductComponent"> -->
+      <Component Id="ProductComponent">
 				<!-- TODO: Insert files, registry keys, and other resources here. -->
-			<!-- </Component> -->
+			  <File Source="$(var.CWTicketNinja.TargetPath)" KeyPath="yes" />
+      </Component>
 		</ComponentGroup>
 	</Fragment>
 
